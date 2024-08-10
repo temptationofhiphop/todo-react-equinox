@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
 import TodoCard from "./TodoCard";
 import { nanoid } from "nanoid";
-import "../TodoContainerStyle.css"; 
+import "../TodoContainerStyle.css";
 
 const TodoContainer = () => {
   const [todos, setTodos] = useState(() => {
@@ -28,8 +28,8 @@ const TodoContainer = () => {
   const toggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, finished: !todo.finished } : todo
-      )
+        todo.id === id ? { ...todo, finished: !todo.finished } : todo,
+      ),
     );
   };
 
@@ -39,7 +39,7 @@ const TodoContainer = () => {
 
   const editTodo = (id, newTask) => {
     setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, task: newTask } : todo))
+      todos.map((todo) => (todo.id === id ? { ...todo, task: newTask } : todo)),
     );
   };
 

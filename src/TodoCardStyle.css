@@ -14,7 +14,7 @@
 }
 
 .todo-card.finished {
-  background: linear-gradient(to right, #50C878, #7FFFD4);
+  background: linear-gradient(to right, #50c878, #7fffd4);
 }
 
 .todo-card.removing {

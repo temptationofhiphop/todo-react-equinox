@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../TodoCardStyle.css"; 
+import "../TodoCardStyle.css";
 
 const TodoCard = ({ task, toggleComplete, deleteTodo, editTodo }) => {
   const [edited, setIsEditing] = useState(false);
@@ -24,7 +24,7 @@ const TodoCard = ({ task, toggleComplete, deleteTodo, editTodo }) => {
 
   return (
     <div
-      className={`todo-card ${isRemoving ? 'removing' : ''} ${task.finished ? 'finished' : ''}`}
+      className={`todo-card ${isRemoving ? "removing" : ""} ${task.finished ? "finished" : ""}`}
     >
       <input
         type="checkbox"
