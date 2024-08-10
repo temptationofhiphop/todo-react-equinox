@@ -2,37 +2,48 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todo-input {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-size: 16px;
+  color: #a0a0a0;
+  outline: none;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn-submit {
+  background-color: #4285f4;
+  border: none;
+  border-radius: 20px;
   color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-submit:hover {
+  background-color: #357ae8;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
+.todo-card p {
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
