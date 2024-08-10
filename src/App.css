@@ -1,4 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+
+body,
 .App {
+  font-family: "Montserrat", sans-serif;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -64,7 +68,6 @@
   padding: 15px;
   margin: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
   font-size: 16px;
   color: #333;
   width: 100%;
@@ -87,4 +90,24 @@
   font-size: 16px;
   cursor: pointer;
   margin-left: 10px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.filter-container select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.filter-container select option {
+  padding: 10px;
+  border-radius: 12px;
 }
