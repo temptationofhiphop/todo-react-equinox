@@ -11,12 +11,6 @@ body,
   min-height: 100vh;
 }
 
-.todo-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
 .todo-input {
   width: 100%;
   border: 1px solid #e0e0e0;
@@ -29,21 +23,9 @@ body,
   margin-bottom: 10px;
 }
 
-.todo-edit-input {
-  width: 30%;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  margin-top: 10px;
-  padding: 10px;
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-}
-
 .btn-submit {
   width: 100%;
-  background-color: #4285f4;
+  background-color: #006a32;
   border: none;
   border-radius: 20px;
   color: white;
@@ -56,21 +38,12 @@ body,
 }
 
 .btn-submit:hover {
-  background-color: #357ae8;
+  background-color: #005025;
+  transition: 0.2s ease-in-out;
 }
 
-.todo-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  color: #333;
-  width: 100%;
+.logo{
+  height: 100px;
 }
 
 .todo-card p {
@@ -81,6 +54,7 @@ body,
 
 .todo-card small {
   margin-left: 10px;
+  font-size: 12px;
 }
 
 .todo-card button {
@@ -92,22 +66,27 @@ body,
   margin-left: 10px;
 }
 
-.filter-container {
-  display: flex;
-  justify-content: flex-end;
+.todo-card.removing {
+  animation: slideOutLeft 0.5s ease forwards;
 }
 
-.filter-container select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  outline: none;
-  background-color: #fff;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-.filter-container select option {
-  padding: 10px;
-  border-radius: 12px;
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }

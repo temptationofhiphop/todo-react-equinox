@@ -1,0 +1,37 @@
+.todo-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.dodo-text {
+  color: #65ae41; 
+}
+
+.filter-container {
+  display: flex;
+  width: 100%;
+}
+
+.filter-container select {
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  background-color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.filter-container select option {
+  padding: 10px;
+  border-radius: 12px;
+}

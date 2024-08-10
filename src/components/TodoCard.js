@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import "../TodoCardStyle.css"; 
 
 const TodoCard = ({ task, toggleComplete, deleteTodo, editTodo }) => {
   const [edited, setIsEditing] = useState(false);
   const [newTask, setNewTask] = useState(task.task);
+  const [isRemoving, setIsRemoving] = useState(false);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -13,24 +15,22 @@ const TodoCard = ({ task, toggleComplete, deleteTodo, editTodo }) => {
     editTodo(task.id, newTask);
   };
 
+  const handleDelete = () => {
+    setIsRemoving(true);
+    setTimeout(() => {
+      deleteTodo(task.id);
+    }, 500);
+  };
+
   return (
     <div
-      className="todo-card"
-      style={{
-        background: task.finished
-          ? "linear-gradient(to right, #50C878, #7FFFD4)"
-          : "white",
-        border: "1px solid #ccc",
-        borderRadius: "8px",
-        padding: "10px",
-        marginBottom: "10px",
-      }}
+      className={`todo-card ${isRemoving ? 'removing' : ''} ${task.finished ? 'finished' : ''}`}
     >
       <input
         type="checkbox"
         checked={task.finished}
         onChange={() => toggleComplete(task.id)}
-        style={{ marginRight: "10px" }}
+        className="todo-checkbox"
       />
       {edited ? (
         <input
@@ -41,20 +41,20 @@ const TodoCard = ({ task, toggleComplete, deleteTodo, editTodo }) => {
           className="todo-edit-input"
         />
       ) : (
-        <p style={{ margin: 0 }}>{task.task}</p>
+        <p className="todo-task">{task.task}</p>
       )}
       <small>Created at: {task.createdAt}</small>
       {edited ? (
-        <button onClick={handleSave}>
-          <i className="fas fa-check" style={{ color: "green" }}></i>
+        <button onClick={handleSave} className="todo-button">
+          <i className="fas fa-check green"></i>
         </button>
       ) : (
-        <button onClick={handleEdit}>
-          <i className="fas fa-pencil-alt" style={{ color: "gray" }}></i>
+        <button onClick={handleEdit} className="todo-button">
+          <i className="fas fa-pencil-alt gray"></i>
         </button>
       )}
-      <button onClick={() => deleteTodo(task.id)}>
-        <i className="fas fa-trash" style={{ color: "red" }}></i>
+      <button onClick={handleDelete} className="todo-button">
+        <i className="fas fa-trash red"></i>
       </button>
     </div>
   );

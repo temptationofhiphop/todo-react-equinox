@@ -21,7 +21,7 @@ const TodoForm = ({ addTodo }) => {
       <input
         type="text"
         className="todo-input"
-        placeholder="Enter"
+        placeholder="Add your new TODO!"
         value={value}
         onChange={storeValue}
       />

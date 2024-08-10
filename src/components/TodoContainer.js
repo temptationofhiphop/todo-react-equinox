@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
 import TodoCard from "./TodoCard";
 import { nanoid } from "nanoid";
+import "../TodoContainerStyle.css"; 
 
 const TodoContainer = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem("todos");
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (todo) => {
     const newTodo = {
@@ -20,8 +28,8 @@ const TodoContainer = () => {
   const toggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, finished: !todo.finished } : todo,
-      ),
+        todo.id === id ? { ...todo, finished: !todo.finished } : todo
+      )
     );
   };
 
@@ -31,12 +39,8 @@ const TodoContainer = () => {
 
   const editTodo = (id, newTask) => {
     setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, task: newTask } : todo)),
+      todos.map((todo) => (todo.id === id ? { ...todo, task: newTask } : todo))
     );
-  };
-
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value);
   };
 
   const filteredTodos = todos.filter((todo) => {
@@ -53,15 +57,23 @@ const TodoContainer = () => {
 
   return (
     <div className="todo-container">
-      <h1>Task List</h1>
+      <img
+        src={`${process.env.PUBLIC_URL}/img/dodo.png`}
+        alt="Dodo Logo"
+        className="logo"
+      />
+      <h1>
+        <span className="dodo-text">Dodo</span> App
+      </h1>
+
       <TodoForm addTodo={addTodo} />
 
       <div className="filter-container">
         <select
           id="filter"
           value={filter}
-          onChange={handleFilterChange}
-          style={{ marginLeft: "10px" }}
+          onChange={(e) => setFilter(e.target.value)}
+          className="filter-select"
         >
           <option value="all">All</option>
           <option value="finished">Finished</option>
@@ -69,10 +81,10 @@ const TodoContainer = () => {
         </select>
       </div>
 
-      {filteredTodos.map((todo, index) => (
+      {filteredTodos.map((todo) => (
         <TodoCard
           task={todo}
-          key={index}
+          key={todo.id}
           toggleComplete={toggleComplete}
           deleteTodo={deleteTodo}
           editTodo={editTodo}
