@@ -12,17 +12,25 @@ const TodoWrapper = () => {
             task: todo,
             finished: false,
             edited: false,
-            createdAt: new Date().toLocaleString()
+            createdAt: new Date().toLocaleString() 
         };
         setTodos([...todos, newTodo]);
-        console.log(todos);
+    };
+
+    const toggleComplete = (id) => {
+        setTodos(
+            todos.map((todo) => 
+                todo.id === id ? { ...todo, finished: !todo.finished } : todo
+            )
+        );
     };
 
     return (
         <div className='todo-container'>
+            <h1>Task here</h1>
             <TodoForm addTodo={addTodo} />
             {todos.map((todo, index) => (
-                <TodoCard task={todo} key={index} />
+                <TodoCard task={todo} key={index} toggleComplete={toggleComplete} />
             ))}
         </div>
     );
