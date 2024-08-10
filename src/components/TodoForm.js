@@ -10,9 +10,10 @@ const TodoForm = ({ addTodo }) => {
   const saveValue = (e) => {
     e.preventDefault();
 
-    addTodo(value);
-
-    setValue("");
+    if (value.trim()) {
+      addTodo(value);
+      setValue("");
+    }
   };
 
   return (
@@ -24,7 +25,9 @@ const TodoForm = ({ addTodo }) => {
         value={value}
         onChange={storeValue}
       />
-      <button className="btn-submit">Create Task</button>
+      <button className="btn-submit" onClick={saveValue}>
+        Create Task
+      </button>
     </form>
   );
 };
